@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom";
 import useWeb3 from "../hooks/useWeb3";
 import logo from "../assets/logo.png";
 
-const NavigationBar = () => {
-  const { connect, connected, address, showAccount } = useWeb3();
 
+
+const NavigationBar = () => {
+  const { connect, connected, address, showAccount, electionRecords } = useWeb3();
+  const {  isEligible } = electionRecords;
   const getFormattedAccount = (account) => {
     return account
       .slice(0, 5)
@@ -28,11 +30,19 @@ const NavigationBar = () => {
       </Navbar.Brand>
       <Navbar.Collapse id="navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Item>
+
+          {/* CONDITIONER */}
+
+          {connected && isEligible ? '' : <Nav.Item>
             <NavLink to="/register" className="link nav-link">
               Register
             </NavLink>
-          </Nav.Item>
+          </Nav.Item> }
+
+          
+          
+
+
           <Nav.Item>
             <NavLink to="/vote" className="link nav-link">
               Vote

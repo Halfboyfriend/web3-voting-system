@@ -7,6 +7,9 @@ import useFaceIO from "../hooks/useFaceIO";
 import { toInt } from "../utils/formatter";
 import { verifyIdentityNumber } from "../api";
 
+
+
+
 export default function Vote() {
   const {
     connected,
